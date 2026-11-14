@@ -1,0 +1,29 @@
+{
+  "categories": [
+    {"id": "shawarma", "title": "Шаурма"},
+    {"id": "grill", "title": "Гриль"},
+    {"id": "snacks", "title": "Закуски"},
+    {"id": "combo", "title": "Комбо"},
+    {"id": "drinks", "title": "Напитки"}
+  ],
+  "items": [
+    {"id": "sh_classic", "cat": "shawarma", "title": "Шаурма Классика", "img": "shawarma-classic",
+     "sizes": [{"id": "s", "title": "Стандарт", "price": 389, "weight": "340 г"}, {"id": "b", "title": "Большая", "price": 439, "weight": "440 г"}]},
+    {"id": "sh_spicy", "cat": "shawarma", "title": "Шаурма Острая", "img": "shawarma-spicy",
+     "sizes": [{"id": "s", "title": "Стандарт", "price": 389, "weight": "350 г"}, {"id": "b", "title": "Большая", "price": 439, "weight": "455 г"}]},
+    {"id": "sh_cheese", "cat": "shawarma", "title": "Шаурма Сырная", "img": "shawarma-cheese",
+     "sizes": [{"id": "s", "title": "Стандарт", "price": 389, "weight": "380 г"}, {"id": "b", "title": "Большая", "price": 439, "weight": "470 г"}]},
+    {"id": "lula", "cat": "grill", "title": "Люля из курицы", "img": "lula", "sizes": [{"id": "s", "title": "", "price": 359, "weight": "225 г"}]},
+    {"id": "shashlik", "cat": "grill", "title": "Шашлык из курицы", "img": "shashlik", "sizes": [{"id": "s", "title": "", "price": 419, "weight": "249 г"}]},
+    {"id": "fries", "cat": "snacks", "title": "Картофель фри", "img": "fries", "sizes": [{"id": "s", "title": "", "price": 149, "weight": "120 г"}]},
+    {"id": "nuggets", "cat": "snacks", "title": "Наггетсы", "img": "nuggets", "sizes": [{"id": "s", "title": "", "price": 149, "weight": "100 г"}]},
+    {"id": "combo", "cat": "combo", "title": "Комбо: шаурма + морс", "img": "combo", "sizes": [{"id": "s", "title": "", "price": 499, "weight": ""}]},
+    {"id": "mors_orange", "cat": "drinks", "title": "Морс апельсин", "sizes": [{"id": "s", "title": "", "price": 139, "weight": "330 мл"}]},
+    {"id": "mors_cherry", "cat": "drinks", "title": "Морс вишня", "sizes": [{"id": "s", "title": "", "price": 139, "weight": "330 мл"}]},
+    {"id": "mors_apple", "cat": "drinks", "title": "Морс яблоко", "sizes": [{"id": "s", "title": "", "price": 139, "weight": "330 мл"}]},
+    {"id": "dobry_orange", "cat": "drinks", "title": "«Добрый» апельсин", "sizes": [{"id": "s", "title": "", "price": 150, "weight": "500 мл"}]},
+    {"id": "dobry_cola", "cat": "drinks", "title": "«Добрый» кола", "sizes": [{"id": "s", "title": "", "price": 150, "weight": "500 мл"}]},
+    {"id": "dobry_lime", "cat": "drinks", "title": "«Добрый» лимон-лайм", "sizes": [{"id": "s", "title": "", "price": 150, "weight": "500 мл"}]},
+    {"id": "bonaqua", "cat": "drinks", "title": "BonAqua", "sizes": [{"id": "s", "title": "", "price": 100, "weight": "500 мл"}]}
+  ]
+}
