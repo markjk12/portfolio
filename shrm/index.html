@@ -32,7 +32,7 @@ body{background:var(--cream)}
 img{max-width:100%;display:block}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
 
 /* ---------- Первый экран ---------- */
 .hero{position:relative;background:var(--bordo);color:var(--cream);overflow:hidden}
@@ -98,26 +98,31 @@ section{padding:56px 0}
 .wrapcard .body{padding:16px 18px 18px}
 .wrapcard h4{font-family:var(--display);font-size:20px}
 .wrapcard .what{font-size:15px;color:var(--muted);margin-top:4px}
-.sizes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-.size{border:2px solid #EBCBAA;border-radius:12px;padding:10px 12px}
-.size.big{border-color:var(--bordo);background:#fff}
-.size .n{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.size .p{font-family:var(--display);font-size:22px;margin-top:2px}
-.size .g{font-size:13px;color:var(--muted)}
+.sizes{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:16px;padding:4px;background:#F1D2B4;border-radius:999px}
+.size{font:inherit;font-weight:600;font-size:15px;color:var(--muted);background:transparent;border:0;border-radius:999px;padding:10px 8px;cursor:pointer;transition:background .15s,color .15s}
+.size:hover{color:var(--bordo)}
+.size.on{background:var(--bordo);color:var(--cream)}
+.price{display:flex;align-items:baseline;gap:10px;margin-top:14px}
+.price .p{font-family:var(--display);font-size:28px;white-space:nowrap}
+.price .g{color:var(--muted);font-size:15px}
 @media (max-width:860px){.wraps{grid-template-columns:1fr}.wrapcard .ph{aspect-ratio:16/9}}
 
 /* Остальные позиции */
-.items{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.item{background:var(--paper);border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:130px 1fr}
-.item .body{padding:16px 18px;display:flex;flex-direction:column;justify-content:center}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{background:var(--paper);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.item .ph{aspect-ratio:4/3}
+.item .body{padding:16px 18px 18px}
 .item h4{font-weight:700;font-size:18px;line-height:1.25}
 .item .meta{display:flex;align-items:baseline;gap:10px;margin-top:8px}
 .item .p{font-family:var(--display);font-size:21px}
 .item .g{font-size:14px;color:var(--muted)}
-@media (max-width:720px){.items{grid-template-columns:1fr}.item{grid-template-columns:110px 1fr}}
-
+@media (max-width:960px){.duo{grid-template-columns:1fr}}
+@media (max-width:560px){.items{grid-template-columns:1fr}.item{display:grid;grid-template-columns:120px 1fr}.item .ph{aspect-ratio:auto;min-height:110px}.item .body{display:flex;flex-direction:column;justify-content:center}}
+.combo-wrap{display:flex;flex-direction:column;gap:16px}
 .combo{background:var(--bordo);color:var(--cream);border-radius:var(--r);padding:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .combo-img{width:150px;border-radius:12px;flex:none}
+@media (min-width:961px){.combo{flex-direction:column;align-items:flex-start}.combo-img{width:100%;max-width:none;aspect-ratio:16/8;object-fit:contain;background:#F0C7A2}}
 .combo-txt{flex:1;min-width:160px}
 .combo .t{font-family:var(--display);font-size:22px}
 .combo .t span{color:var(--gold)}
@@ -221,7 +226,6 @@ footer a{color:var(--cream)}
 <section id="menu">
   <div class="wrap">
     <h2 class="h2">Меню</h2>
-    <p class="sub">Цены как в&nbsp;нашем Telegram-боте. Там&nbsp;же можно собрать заказ и&nbsp;выбрать: забрать с&nbsp;собой или поесть на&nbsp;месте.</p>
 
     <nav class="cats" aria-label="Разделы меню">
       <a href="#shawarma" class="on">Шаурма</a>
@@ -239,10 +243,7 @@ footer a{color:var(--cream)}
           <div class="body">
             <h4>Классика</h4>
             <p class="what">Та самая, с&nbsp;которой стоит начать</p>
-            <div class="sizes">
-              <div class="size"><div class="n">Стандарт</div><div class="p">389 ₽</div><div class="g">340 г</div></div>
-              <div class="size big"><div class="n">Большая</div><div class="p">439 ₽</div><div class="g">440 г</div></div>
-            </div>
+            <div class="sizes" role="group" aria-label="Размер"><button type="button" class="size on" aria-pressed="true" data-p="389" data-g="340">Стандарт</button><button type="button" class="size" aria-pressed="false" data-p="439" data-g="440">Большая</button></div><div class="price"><span class="p">389 ₽</span><span class="g">340 г</span></div>
           </div>
         </article>
         <article class="wrapcard">
@@ -250,10 +251,7 @@ footer a{color:var(--cream)}
           <div class="body">
             <h4>Острая</h4>
             <p class="what">Для тех, кто любит погорячее</p>
-            <div class="sizes">
-              <div class="size"><div class="n">Стандарт</div><div class="p">389 ₽</div><div class="g">350 г</div></div>
-              <div class="size big"><div class="n">Большая</div><div class="p">439 ₽</div><div class="g">455 г</div></div>
-            </div>
+            <div class="sizes" role="group" aria-label="Размер"><button type="button" class="size on" aria-pressed="true" data-p="389" data-g="350">Стандарт</button><button type="button" class="size" aria-pressed="false" data-p="439" data-g="455">Большая</button></div><div class="price"><span class="p">389 ₽</span><span class="g">350 г</span></div>
           </div>
         </article>
         <article class="wrapcard">
@@ -261,15 +259,13 @@ footer a{color:var(--cream)}
           <div class="body">
             <h4>Сырная</h4>
             <p class="what">Тянется на&nbsp;каждом укусе</p>
-            <div class="sizes">
-              <div class="size"><div class="n">Стандарт</div><div class="p">389 ₽</div><div class="g">380 г</div></div>
-              <div class="size big"><div class="n">Большая</div><div class="p">439 ₽</div><div class="g">470 г</div></div>
-            </div>
+            <div class="sizes" role="group" aria-label="Размер"><button type="button" class="size on" aria-pressed="true" data-p="389" data-g="380">Стандарт</button><button type="button" class="size" aria-pressed="false" data-p="439" data-g="470">Большая</button></div><div class="price"><span class="p">389 ₽</span><span class="g">380 г</span></div>
           </div>
         </article>
       </div>
     </div>
 
+    <div class="duo">
     <div class="group" id="grill">
       <h3>Гриль</h3>
       <div class="items">
@@ -286,6 +282,9 @@ footer a{color:var(--cream)}
       </div>
     </div>
 
+    </div>
+
+    <div class="duo">
     <div class="group" id="combo">
       <h3>Комбо</h3>
       <div class="combo">
@@ -310,8 +309,7 @@ footer a{color:var(--cream)}
         <li><span class="nm">BonAqua</span><span class="vol">500 мл</span><span class="fill"></span><span class="p">100 ₽</span></li>
       </ul>
     </div>
-
-    <p class="note">Цены и&nbsp;состав могут меняться&nbsp;— точное меню всегда в&nbsp;Telegram-боте.</p>
+    </div>
   </div>
 </section>
 
@@ -382,17 +380,30 @@ footer a{color:var(--cream)}
 
 // Подсветка текущего раздела меню
 (function(){
-  var links = [].slice.call(document.querySelectorAll('.cats a'));
-  if(!('IntersectionObserver' in window)) return;
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#'+e.target.id); });
-      }
-    });
-  },{rootMargin:'-30% 0px -60% 0px'});
-  ['shawarma','grill','snacks','combo','drinks'].forEach(function(id){ io.observe(document.getElementById(id)); });
+  var links=[].slice.call(document.querySelectorAll('.cats a'));
+  var ids=links.map(function(a){return a.getAttribute('href').slice(1)});
+  var locked=null;
+  function set(id){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)});}
+  links.forEach(function(a){a.addEventListener('click',function(){locked=a.getAttribute('href').slice(1);set(locked);});});
+  ['wheel','touchstart','keydown'].forEach(function(ev){window.addEventListener(ev,function(){locked=null},{passive:true})});
+  function spy(){
+    if(locked) return;
+    var cur=ids[0];
+    ids.forEach(function(id){var el=document.getElementById(id); if(el.getBoundingClientRect().top<=110) cur=id;});
+    if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4) cur=ids[ids.length-1];
+    set(cur);
+  }
+  window.addEventListener('scroll',spy,{passive:true}); spy();
 })();
+
+// Выбор размера шаурмы
+[].forEach.call(document.querySelectorAll('.wrapcard'),function(card){
+  var btns=card.querySelectorAll('.size'), p=card.querySelector('.price .p'), g=card.querySelector('.price .g');
+  [].forEach.call(btns,function(b){b.addEventListener('click',function(){
+    [].forEach.call(btns,function(x){x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});
+    p.textContent=b.dataset.p+' ₽'; g.textContent=b.dataset.g+' г';
+  });});
+});
 </script>
 </body>
 </html>
