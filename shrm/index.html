@@ -7,7 +7,7 @@
 <meta name="description" content="Шаурма, люля и шашлык из курицы у ТЦ «Роща» в Новосибирске. Работаем круглосуточно. Заказ через Telegram.">
 <!-- Концепт: страница скрыта от поисковиков, пока заведение не одобрит сайт -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#1E2125">
+<meta name="theme-color" content="#6C151E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -34,60 +34,49 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
 
-/* ---------- Фасад (первый экран) ---------- */
-.facade{
-  position:relative;color:#fff;overflow:hidden;
-  background:
-    repeating-linear-gradient(90deg, var(--bordo) 0 22px, var(--bordo-d) 22px 26px, var(--bordo-dd) 26px 28px);
-  padding:20px 0 0;
-}
-.facade::after{ /* вечерний свет от вывески */
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(70% 45% at 50% 18%, rgba(255,190,140,.22), transparent 70%);
-}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}
-.topbar .addr{font-size:14px;color:#F0C9A6}
-.topbar a.tg-mini{font-weight:600;font-size:14px;text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:8px 14px;border-radius:99px;white-space:nowrap}
-
-.sign{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:clamp(14px,4vw,40px);margin:46px auto 0;flex-wrap:wrap}
-.sign .h247{font-family:var(--display);font-size:clamp(44px,11vw,104px);color:var(--gold);letter-spacing:-.02em;
-  text-shadow:0 0 18px rgba(242,181,68,.55), 0 0 2px #fff6}
-.sign .brand{font-family:var(--display);font-size:clamp(64px,17vw,168px);line-height:.9;color:var(--cream);letter-spacing:.01em;
-  text-shadow:0 0 6px rgba(255,235,210,.8), 0 0 30px rgba(255,170,120,.55), 0 0 80px rgba(255,120,90,.35);
-  animation:hum 6s infinite}
-@keyframes hum{0%,93%,100%{opacity:1}94%{opacity:.82}95%{opacity:1}97%{opacity:.9}}
-@media (prefers-reduced-motion:reduce){.sign .brand{animation:none}}
-
-.door{ /* золотая рамка-витрина, как у входа */
-  position:relative;z-index:1;margin:40px auto 0;max-width:760px;
-  border:3px solid var(--gold);border-bottom:none;border-radius:6px 6px 0 0;
-  background:linear-gradient(180deg, rgba(62,10,16,.88), rgba(46,7,12,.96));
-  padding:28px 22px 30px;box-shadow:0 0 30px rgba(242,181,68,.18) inset;
-}
-.door h1{font-family:var(--display);font-size:clamp(24px,5.4vw,40px);line-height:1.15;letter-spacing:-.01em}
-.door h1 em{font-style:normal;color:var(--gold)}
-.door p.lead{margin-top:12px;color:#F0D3B8;max-width:52ch}
-.now{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-weight:600;font-size:15px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);padding:8px 14px;border-radius:99px}
-.now .dot{width:9px;height:9px;border-radius:50%;background:#3BD16F;box-shadow:0 0 0 0 rgba(59,209,111,.6);animation:ping 2s infinite}
-@keyframes ping{70%{box-shadow:0 0 0 9px rgba(59,209,111,0)}100%{box-shadow:0 0 0 0 rgba(59,209,111,0)}}
-@media (prefers-reduced-motion:reduce){.now .dot{animation:none}}
-.now b{font-variant-numeric:tabular-nums;color:#fff}
-.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:17px;text-decoration:none;border-radius:14px;padding:15px 22px;min-height:52px;transition:transform .15s}
+/* ---------- Первый экран ---------- */
+.hero{position:relative;background:var(--bordo);color:var(--cream);overflow:hidden}
+.hero .wrap{position:relative}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0}
+.logo{font-family:var(--display);font-size:26px;letter-spacing:.02em;text-decoration:none}
+.status{font-size:14px;font-weight:500;color:#F0C9A6;font-variant-numeric:tabular-nums}
+.status b{color:var(--cream);font-weight:600}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:end;gap:24px;padding:40px 0 0}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(58px,10.5vw,132px);line-height:.88;letter-spacing:-.03em}
+.hero .lead{margin-top:22px;font-size:clamp(17px,1.6vw,19px);max-width:34ch;color:#F0D3B8}
+.hero .lead strong{color:var(--cream);font-weight:600}
+.ctas{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;margin:30px 0 64px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:17px;text-decoration:none;border-radius:999px;padding:16px 26px;min-height:54px;transition:transform .15s, background .15s}
 .btn:active{transform:scale(.97)}
-.btn-red{background:var(--cream);color:var(--bordo);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.btn-red{background:var(--cream);color:var(--bordo)}
 .btn-red:hover{background:#fff}
-.dock .btn-red{background:var(--bordo);color:var(--cream);box-shadow:0 8px 24px rgba(62,10,16,.4)}
-.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35)}
-.btn-ghost:hover{border-color:#fff}
-.btn svg{width:22px;height:22px;flex:none}
+.dock .btn-red{background:var(--bordo);color:var(--cream);box-shadow:0 10px 30px rgba(62,10,16,.35)}
+.btn svg{width:20px;height:20px;flex:none}
+.link{font-weight:600;text-decoration:none;border-bottom:2px solid rgba(245,218,191,.35);padding-bottom:2px}
+.link:hover{border-color:var(--cream)}
+.art{position:relative;align-self:end;margin-bottom:-40px}
+.art img{width:100%;max-width:440px;margin-left:auto;display:block}
+.sticker{position:absolute;left:4%;top:8%;width:118px;height:118px;border-radius:50%;background:var(--gold);color:var(--bordo-dd);
+  display:grid;place-content:center;text-align:center;transform:rotate(-12deg);box-shadow:0 8px 20px rgba(30,4,8,.25)}
+.sticker b{font-family:var(--display);font-weight:400;font-size:34px;line-height:1}
+.sticker span{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+@media (max-width:760px){
+  .hero-grid{grid-template-columns:1fr;padding-top:24px;gap:0}
+  .ctas{margin-bottom:8px}
+  .btn-red{flex:1 1 100%}
+  .art{margin:8px -16px -30px auto;width:82%}
+  .sticker{width:96px;height:96px;left:-8%;top:14%}
+  .sticker b{font-size:27px}
+  .sticker span{font-size:10px}
+}
 
 /* ---------- Почему к нам ---------- */
-.why{background:var(--bordo-dd);color:var(--cream);padding:22px 0}
-.why ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.why li{font-weight:600;font-size:16px;line-height:1.35;display:flex;gap:10px;align-items:flex-start}
-.why li::before{content:"";flex:none;width:10px;height:10px;margin-top:6px;border-radius:50%;background:var(--gold)}
-@media (max-width:720px){.why ul{grid-template-columns:1fr;gap:10px}}
+.why{background:var(--cream);padding:72px 0 8px}
+.why ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.why li{border-top:2px solid var(--bordo);padding-top:16px}
+.why b{display:block;font-family:var(--display);font-weight:400;font-size:22px;line-height:1.1;color:var(--bordo)}
+.why span{display:block;margin-top:8px;color:var(--muted);font-size:16px}
+@media (max-width:760px){.why{padding-top:64px}.why ul{grid-template-columns:1fr;gap:22px}}
 
 /* ---------- Меню ---------- */
 section{padding:56px 0}
@@ -127,8 +116,7 @@ section{padding:56px 0}
 .item .g{font-size:14px;color:var(--muted)}
 @media (max-width:720px){.items{grid-template-columns:1fr}.item{grid-template-columns:110px 1fr}}
 
-.combo{background:var(--bordo);color:var(--cream);border-radius:var(--r);padding:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  background-image:repeating-linear-gradient(90deg, transparent 0 22px, rgba(255,255,255,.04) 22px 26px)}
+.combo{background:var(--bordo);color:var(--cream);border-radius:var(--r);padding:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .combo-img{width:150px;border-radius:12px;flex:none}
 .combo-txt{flex:1;min-width:160px}
 .combo .t{font-family:var(--display);font-size:22px}
@@ -165,19 +153,18 @@ section{padding:56px 0}
 @media (max-width:720px){.steps{grid-template-columns:1fr}}
 
 /* ---------- Где нас найти ---------- */
-.find{background:var(--bordo);color:var(--cream);
-  background-image:repeating-linear-gradient(90deg, var(--bordo) 0 22px, var(--bordo-d) 22px 26px, var(--bordo-dd) 26px 28px)}
+.find{background:var(--bordo);color:var(--cream)}
 .find .h2{color:var(--cream)}
 .findgrid{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;margin-top:28px;align-items:stretch}
-.card-dark{background:rgba(46,7,12,.92);border:3px solid var(--gold);border-radius:var(--r);padding:24px}
+.card-dark{background:var(--bordo-dd);border-radius:var(--r);padding:28px}
 .card-dark dl{display:grid;gap:18px}
-.card-dark dt{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);font-weight:700}
+.card-dark dt{font-size:14px;color:#D9A98F;font-weight:500}
 .card-dark dd{font-size:18px;font-weight:600;margin-top:2px}
 .card-dark dd small{display:block;font-weight:400;font-size:15px;color:#F0C9A6}
 .maplinks{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.maplinks a{font-size:15px;font-weight:600;text-decoration:none;padding:10px 14px;border-radius:12px;border:2px solid rgba(255,255,255,.25)}
+.maplinks a{font-size:15px;font-weight:600;text-decoration:none;padding:10px 16px;border-radius:999px;border:2px solid rgba(245,218,191,.3)}
 .maplinks a:hover{border-color:#fff}
-.map{border-radius:var(--r);overflow:hidden;min-height:320px;background:var(--bordo-dd);border:3px solid var(--gold)}
+.map{border-radius:var(--r);overflow:hidden;min-height:320px;background:var(--bordo-dd)}
 .map iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
 @media (max-width:860px){.findgrid{grid-template-columns:1fr}}
 
@@ -194,28 +181,27 @@ footer a{color:var(--cream)}
 </head>
 <body>
 
-<header class="facade">
+<header class="hero">
   <div class="wrap">
-    <div class="topbar">
-      <div class="addr">Новосибирск · пр. Дзержинского, 2/2</div>
-      <a class="tg-mini" href="https://t.me/ShaurmaNSK_bot">Меню в Telegram</a>
+    <div class="bar">
+      <a class="logo" href="#">ШРМ</a>
+      <div class="status">Открыто сейчас · <b id="clock">—:—</b></div>
     </div>
-
-    <div class="sign" aria-hidden="true">
-      <span class="h247">24/7</span>
-      <span class="brand">ШРМ</span>
-    </div>
-
-    <div class="door">
-      <h1>Шаурма на&nbsp;огне у&nbsp;«Рощи». <em>Открыты круглосуточно.</em></h1>
-      <p class="lead">Тонкий хрустящий лаваш, сочная начинка и&nbsp;сыр, который не&nbsp;жалеют. Закажите в&nbsp;Telegram&nbsp;— заберёте горячей, без очереди.</p>
-      <div class="now" id="now"><span class="dot"></span><span>Сейчас <b id="clock">—:—</b> в&nbsp;Новосибирске&nbsp;— мы&nbsp;открыты</span></div>
-      <div class="ctas">
-        <a class="btn btn-red" href="https://t.me/ShaurmaNSK_bot">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.6c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.3 13.3l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3Z"/></svg>
-          Заказать в Telegram
-        </a>
-        <a class="btn btn-ghost" href="#menu">Смотреть меню</a>
+    <div class="hero-grid">
+      <div>
+        <h1>Шаурма на&nbsp;огне</h1>
+        <p class="lead"><strong>Круглосуточно</strong> у&nbsp;ТЦ «Роща», проспект Дзержинского,&nbsp;2/2. Закажите в&nbsp;Telegram и&nbsp;заберите горячей.</p>
+        <div class="ctas">
+          <a class="btn btn-red" href="https://t.me/ShaurmaNSK_bot">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.6c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.3 13.3l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3Z"/></svg>
+            Заказать в Telegram
+          </a>
+          <a class="link" href="#menu">Смотреть меню</a>
+        </div>
+      </div>
+      <div class="art">
+        <img src="img/hero.svg" alt="Сырная шаурма в фирменной упаковке ШРМ">
+        <div class="sticker" aria-hidden="true"><b>24/7</b><span>открыто</span></div>
       </div>
     </div>
   </div>
@@ -224,9 +210,9 @@ footer a{color:var(--cream)}
 <div class="why">
   <div class="wrap">
     <ul>
-      <li>Мясо готовим на&nbsp;огне, лаваш поджариваем до&nbsp;хруста</li>
-      <li>Заказ готов к&nbsp;обещанному времени&nbsp;— можно забрать или поесть у&nbsp;нас за&nbsp;столиком</li>
-      <li>Работаем 24/7: и&nbsp;в&nbsp;обед, и&nbsp;в&nbsp;три часа ночи</li>
+      <li><b>Мясо на&nbsp;огне</b><span>Лаваш поджариваем до&nbsp;хруста, сыр не&nbsp;жалеем</span></li>
+      <li><b>Готово к&nbsp;сроку</b><span>Заберите с&nbsp;собой или поешьте у&nbsp;нас за&nbsp;столиком</span></li>
+      <li><b>Днём и&nbsp;ночью</b><span>Работаем круглосуточно, без выходных</span></li>
     </ul>
   </div>
 </div>
@@ -382,7 +368,7 @@ footer a{color:var(--cream)}
   function tick(){
     try{
       el.textContent = new Intl.DateTimeFormat('ru-RU',{timeZone:'Asia/Novosibirsk',hour:'2-digit',minute:'2-digit'}).format(new Date());
-    }catch(e){ el.parentNode.parentNode.style.display='none'; }
+    }catch(e){ el.textContent='24/7'; }
   }
   tick(); setInterval(tick, 15000);
 })();
