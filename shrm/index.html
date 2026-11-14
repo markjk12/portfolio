@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ШРМ — шаурма на Дзержинского, 2/2 · круглосуточно</title>
+<meta name="description" content="Шаурма, люля и шашлык из курицы у ТЦ «Роща» в Новосибирске. Работаем круглосуточно. Заказ через Telegram.">
+<!-- Концепт: страница скрыта от поисковиков, пока заведение не одобрит сайт -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1E2125">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --graphite:#1E2125;   /* панели фасада */
+  --steel:#2C3036;      /* рёбра панелей */
+  --red:#E3201B;        /* буквы ШРМ */
+  --gold:#F2B544;       /* 24/7 и золотая рамка двери */
+  --lavash:#F7E6C4;     /* тёплый фон меню */
+  --crust:#C98A3A;      /* поджаристый край */
+  --ink:#1A1A1A;
+  --paper:#FFFDF8;
+  --display:"Unbounded", system-ui, sans-serif;
+  --body:"Golos Text", system-ui, sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);color:var(--ink);background:var(--lavash);line-height:1.5;font-size:17px}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+
+/* ---------- Фасад (первый экран) ---------- */
+.facade{
+  position:relative;color:#fff;overflow:hidden;
+  background:
+    repeating-linear-gradient(90deg, var(--graphite) 0 22px, var(--steel) 22px 26px, #17191c 26px 28px);
+  padding:20px 0 0;
+}
+.facade::after{ /* вечерний свет от вывески */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(70% 45% at 50% 18%, rgba(227,32,27,.28), transparent 70%);
+}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}
+.topbar .addr{font-size:14px;color:#cfd3d8}
+.topbar a.tg-mini{font-weight:600;font-size:14px;text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:8px 14px;border-radius:99px;white-space:nowrap}
+
+.sign{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:clamp(14px,4vw,40px);margin:46px auto 0;flex-wrap:wrap}
+.sign .h247{font-family:var(--display);font-weight:900;font-size:clamp(44px,11vw,104px);color:var(--gold);letter-spacing:-.02em;
+  text-shadow:0 0 18px rgba(242,181,68,.55), 0 0 2px #fff6}
+.sign .brand{font-family:var(--display);font-weight:900;font-size:clamp(64px,17vw,168px);line-height:.9;color:var(--red);letter-spacing:.01em;
+  text-shadow:0 0 6px rgba(255,90,80,.9), 0 0 28px rgba(227,32,27,.75), 0 0 70px rgba(227,32,27,.45);
+  animation:hum 6s infinite}
+@keyframes hum{0%,93%,100%{opacity:1}94%{opacity:.82}95%{opacity:1}97%{opacity:.9}}
+@media (prefers-reduced-motion:reduce){.sign .brand{animation:none}}
+
+.door{ /* золотая рамка-витрина, как у входа */
+  position:relative;z-index:1;margin:40px auto 0;max-width:760px;
+  border:3px solid var(--gold);border-bottom:none;border-radius:6px 6px 0 0;
+  background:linear-gradient(180deg, rgba(10,11,13,.82), rgba(10,11,13,.95));
+  padding:28px 22px 30px;box-shadow:0 0 30px rgba(242,181,68,.18) inset;
+}
+.door h1{font-family:var(--display);font-weight:700;font-size:clamp(24px,5.4vw,40px);line-height:1.15;letter-spacing:-.01em}
+.door h1 em{font-style:normal;color:var(--gold)}
+.door p.lead{margin-top:12px;color:#d8dbe0;max-width:52ch}
+.now{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-weight:600;font-size:15px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);padding:8px 14px;border-radius:99px}
+.now .dot{width:9px;height:9px;border-radius:50%;background:#3BD16F;box-shadow:0 0 0 0 rgba(59,209,111,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px rgba(59,209,111,0)}100%{box-shadow:0 0 0 0 rgba(59,209,111,0)}}
+@media (prefers-reduced-motion:reduce){.now .dot{animation:none}}
+.now b{font-variant-numeric:tabular-nums;color:#fff}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:17px;text-decoration:none;border-radius:14px;padding:15px 22px;min-height:52px;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 8px 24px rgba(227,32,27,.4)}
+.btn-red:hover{background:#c91a15}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35)}
+.btn-ghost:hover{border-color:#fff}
+.btn svg{width:22px;height:22px;flex:none}
+
+/* ---------- Почему к нам ---------- */
+.why{background:var(--red);color:#fff;padding:22px 0}
+.why ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.why li{font-weight:600;font-size:16px;line-height:1.35;display:flex;gap:10px;align-items:flex-start}
+.why li::before{content:"";flex:none;width:10px;height:10px;margin-top:6px;border-radius:50%;background:var(--gold)}
+@media (max-width:720px){.why ul{grid-template-columns:1fr;gap:10px}}
+
+/* ---------- Меню ---------- */
+section{padding:56px 0}
+.h2{font-family:var(--display);font-weight:900;font-size:clamp(30px,7vw,52px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+.sub{margin-top:10px;color:#5b4a2e;max-width:60ch}
+
+.cats{position:sticky;top:0;z-index:5;background:var(--lavash);margin:22px -16px 0;padding:10px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(0,0,0,.08)}
+.cats::-webkit-scrollbar{display:none}
+.cats a{flex:none;text-decoration:none;font-weight:600;font-size:15px;padding:9px 16px;border-radius:99px;background:#fff;border:1px solid rgba(0,0,0,.1)}
+.cats a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+.group{margin-top:40px;scroll-margin-top:70px}
+.group h3{font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:16px}
+
+/* Шаурма: 3 вкуса × 2 размера */
+.wraps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.wrapcard{background:var(--paper);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.06)}
+.wrapcard .ph{aspect-ratio:4/3}
+.wrapcard .body{padding:16px 18px 18px}
+.wrapcard h4{font-family:var(--display);font-weight:700;font-size:20px}
+.wrapcard .what{font-size:15px;color:#6b5a3c;margin-top:4px}
+.sizes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.size{border:2px solid #eedcb8;border-radius:12px;padding:10px 12px}
+.size.big{border-color:var(--crust);background:#fff6e4}
+.size .n{font-size:13px;font-weight:600;color:#7a6440;text-transform:uppercase;letter-spacing:.04em}
+.size .p{font-family:var(--display);font-weight:700;font-size:22px;margin-top:2px}
+.size .g{font-size:13px;color:#8b7a5c}
+@media (max-width:860px){.wraps{grid-template-columns:1fr}.wrapcard .ph{aspect-ratio:16/9}}
+
+/* Остальные позиции */
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.item{background:var(--paper);border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:130px 1fr}
+.item .body{padding:16px 18px;display:flex;flex-direction:column;justify-content:center}
+.item h4{font-weight:700;font-size:18px;line-height:1.25}
+.item .meta{display:flex;align-items:baseline;gap:10px;margin-top:8px}
+.item .p{font-family:var(--display);font-weight:700;font-size:21px}
+.item .g{font-size:14px;color:#8b7a5c}
+@media (max-width:720px){.items{grid-template-columns:1fr}.item{grid-template-columns:110px 1fr}}
+
+.combo{background:var(--ink);color:#fff;border-radius:var(--r);padding:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  background-image:repeating-linear-gradient(90deg, transparent 0 22px, rgba(255,255,255,.04) 22px 26px)}
+.combo .t{font-family:var(--display);font-weight:700;font-size:22px}
+.combo .t span{color:var(--gold)}
+.combo .d{color:#c9cdd2;font-size:15px;margin-top:4px}
+.combo .p{font-family:var(--display);font-weight:900;font-size:34px;color:var(--gold)}
+
+.drinks{background:var(--paper);border-radius:var(--r);padding:8px 20px}
+.drinks li{list-style:none;display:flex;align-items:baseline;gap:8px;padding:12px 0;border-bottom:1px dashed #e6d3ad}
+.drinks li:last-child{border-bottom:none}
+.drinks .nm{font-weight:600}
+.drinks .vol{color:#8b7a5c;font-size:14px;white-space:nowrap}
+.drinks .fill{flex:1;border-bottom:2px dotted #dcc59a;transform:translateY(-4px)}
+.drinks .p{font-family:var(--display);font-weight:700;white-space:nowrap}
+.size .p,.item .p,.combo .p{white-space:nowrap}
+
+.note{margin-top:22px;font-size:14px;color:#7a6440}
+
+/* Место под фото (пока нет настоящих снимков) */
+.ph{position:relative;background:
+   repeating-linear-gradient(90deg, #2a2d32 0 14px, #33373d 14px 16px);
+   display:flex;align-items:center;justify-content:center;color:#9aa0a8;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.ph::after{content:"фото";}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph:has(img)::after{content:none}
+
+/* ---------- Как заказать ---------- */
+.how{background:var(--paper)}
+.steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.steps li{counter-increment:s;background:var(--lavash);border-radius:var(--r);padding:22px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--red);color:#fff;font-family:var(--display);font-weight:900;font-size:20px;margin-bottom:14px}
+.steps b{display:block;font-size:18px;margin-bottom:4px}
+.steps span{color:#5b4a2e;font-size:16px}
+@media (max-width:720px){.steps{grid-template-columns:1fr}}
+
+/* ---------- Где нас найти ---------- */
+.find{background:var(--graphite);color:#fff;
+  background-image:repeating-linear-gradient(90deg, var(--graphite) 0 22px, var(--steel) 22px 26px, #17191c 26px 28px)}
+.find .h2{color:#fff}
+.findgrid{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;margin-top:28px;align-items:stretch}
+.card-dark{background:rgba(10,11,13,.9);border:3px solid var(--gold);border-radius:var(--r);padding:24px}
+.card-dark dl{display:grid;gap:18px}
+.card-dark dt{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);font-weight:700}
+.card-dark dd{font-size:18px;font-weight:600;margin-top:2px}
+.card-dark dd small{display:block;font-weight:400;font-size:15px;color:#c9cdd2}
+.maplinks{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.maplinks a{font-size:15px;font-weight:600;text-decoration:none;padding:10px 14px;border-radius:12px;border:2px solid rgba(255,255,255,.25)}
+.maplinks a:hover{border-color:#fff}
+.map{border-radius:var(--r);overflow:hidden;min-height:320px;background:#2a2d32;border:3px solid var(--gold)}
+.map iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
+@media (max-width:860px){.findgrid{grid-template-columns:1fr}}
+
+footer{background:#121315;color:#9aa0a8;font-size:14px;padding:28px 0 110px}
+footer p+p{margin-top:8px}
+footer a{color:#fff}
+
+/* Кнопка заказа внизу экрана на телефоне */
+.dock{position:fixed;left:12px;right:12px;bottom:12px;z-index:20;display:none}
+.dock .btn{width:100%}
+@media (max-width:720px){.dock{display:block;transform:translateY(140%);transition:transform .25s}.dock.show{transform:none}}
+@media (prefers-reduced-motion:reduce){.dock{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="facade">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="addr">Новосибирск · пр. Дзержинского, 2/2</div>
+      <a class="tg-mini" href="https://t.me/ShaurmaNSK_bot">Меню в Telegram</a>
+    </div>
+
+    <div class="sign" aria-hidden="true">
+      <span class="h247">24/7</span>
+      <span class="brand">ШРМ</span>
+    </div>
+
+    <div class="door">
+      <h1>Шаурма на&nbsp;огне у&nbsp;«Рощи». <em>Открыты круглосуточно.</em></h1>
+      <p class="lead">Тонкий хрустящий лаваш, сочная начинка и&nbsp;сыр, который не&nbsp;жалеют. Закажите в&nbsp;Telegram&nbsp;— заберёте горячей, без очереди.</p>
+      <div class="now" id="now"><span class="dot"></span><span>Сейчас <b id="clock">—:—</b> в&nbsp;Новосибирске&nbsp;— мы&nbsp;открыты</span></div>
+      <div class="ctas">
+        <a class="btn btn-red" href="https://t.me/ShaurmaNSK_bot">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.6c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.3 13.3l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3Z"/></svg>
+          Заказать в Telegram
+        </a>
+        <a class="btn btn-ghost" href="#menu">Смотреть меню</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="why">
+  <div class="wrap">
+    <ul>
+      <li>Мясо готовим на&nbsp;огне, лаваш поджариваем до&nbsp;хруста</li>
+      <li>Заказ готов к&nbsp;обещанному времени&nbsp;— можно забрать или поесть у&nbsp;нас за&nbsp;столиком</li>
+      <li>Работаем 24/7: и&nbsp;в&nbsp;обед, и&nbsp;в&nbsp;три часа ночи</li>
+    </ul>
+  </div>
+</div>
+
+<main>
+<section id="menu">
+  <div class="wrap">
+    <h2 class="h2">Меню</h2>
+    <p class="sub">Цены как в&nbsp;нашем Telegram-боте. Там&nbsp;же можно собрать заказ и&nbsp;выбрать: забрать с&nbsp;собой или поесть на&nbsp;месте.</p>
+
+    <nav class="cats" aria-label="Разделы меню">
+      <a href="#shawarma" class="on">Шаурма</a>
+      <a href="#grill">Гриль</a>
+      <a href="#snacks">Закуски</a>
+      <a href="#combo">Комбо</a>
+      <a href="#drinks">Напитки</a>
+    </nav>
+
+    <div class="group" id="shawarma">
+      <h3>Шаурма</h3>
+      <div class="wraps">
+        <article class="wrapcard">
+          <div class="ph" data-photo="shawarma-classic"></div>
+          <div class="body">
+            <h4>Классика</h4>
+            <p class="what">Та самая, с&nbsp;которой стоит начать</p>
+            <div class="sizes">
+              <div class="size"><div class="n">Стандарт</div><div class="p">389 ₽</div><div class="g">340 г</div></div>
+              <div class="size big"><div class="n">Большая</div><div class="p">439 ₽</div><div class="g">440 г</div></div>
+            </div>
+          </div>
+        </article>
+        <article class="wrapcard">
+          <div class="ph" data-photo="shawarma-spicy"></div>
+          <div class="body">
+            <h4>Острая</h4>
+            <p class="what">Для тех, кто любит погорячее</p>
+            <div class="sizes">
+              <div class="size"><div class="n">Стандарт</div><div class="p">389 ₽</div><div class="g">350 г</div></div>
+              <div class="size big"><div class="n">Большая</div><div class="p">439 ₽</div><div class="g">455 г</div></div>
+            </div>
+          </div>
+        </article>
+        <article class="wrapcard">
+          <div class="ph" data-photo="shawarma-cheese"></div>
+          <div class="body">
+            <h4>Сырная</h4>
+            <p class="what">Тянется на&nbsp;каждом укусе</p>
+            <div class="sizes">
+              <div class="size"><div class="n">Стандарт</div><div class="p">389 ₽</div><div class="g">380 г</div></div>
+              <div class="size big"><div class="n">Большая</div><div class="p">439 ₽</div><div class="g">470 г</div></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="group" id="grill">
+      <h3>Гриль</h3>
+      <div class="items">
+        <article class="item"><div class="ph" data-photo="lula"></div><div class="body"><h4>Люля из&nbsp;курицы</h4><div class="meta"><span class="p">359 ₽</span><span class="g">225 г</span></div></div></article>
+        <article class="item"><div class="ph" data-photo="shashlik"></div><div class="body"><h4>Шашлык из&nbsp;курицы</h4><div class="meta"><span class="p">419 ₽</span><span class="g">249 г</span></div></div></article>
+      </div>
+    </div>
+
+    <div class="group" id="snacks">
+      <h3>Закуски</h3>
+      <div class="items">
+        <article class="item"><div class="ph" data-photo="fries"></div><div class="body"><h4>Картофель фри</h4><div class="meta"><span class="p">149 ₽</span><span class="g">120 г</span></div></div></article>
+        <article class="item"><div class="ph" data-photo="nuggets"></div><div class="body"><h4>Наггетсы</h4><div class="meta"><span class="p">149 ₽</span><span class="g">100 г</span></div></div></article>
+      </div>
+    </div>
+
+    <div class="group" id="combo">
+      <h3>Комбо</h3>
+      <div class="combo">
+        <div>
+          <div class="t">Шаурма <span>+</span> морс</div>
+          <div class="d">Сытный обед в&nbsp;одном заказе</div>
+        </div>
+        <div class="p">499 ₽</div>
+      </div>
+    </div>
+
+    <div class="group" id="drinks">
+      <h3>Напитки</h3>
+      <ul class="drinks">
+        <li><span class="nm">Морс апельсин</span><span class="vol">330 мл</span><span class="fill"></span><span class="p">139 ₽</span></li>
+        <li><span class="nm">Морс вишня</span><span class="vol">330 мл</span><span class="fill"></span><span class="p">139 ₽</span></li>
+        <li><span class="nm">Морс яблоко</span><span class="vol">330 мл</span><span class="fill"></span><span class="p">139 ₽</span></li>
+        <li><span class="nm">«Добрый» апельсин</span><span class="vol">500 мл</span><span class="fill"></span><span class="p">150 ₽</span></li>
+        <li><span class="nm">«Добрый» кола</span><span class="vol">500 мл</span><span class="fill"></span><span class="p">150 ₽</span></li>
+        <li><span class="nm">«Добрый» лимон-лайм</span><span class="vol">500 мл</span><span class="fill"></span><span class="p">150 ₽</span></li>
+        <li><span class="nm">BonAqua</span><span class="vol">500 мл</span><span class="fill"></span><span class="p">100 ₽</span></li>
+      </ul>
+    </div>
+
+    <p class="note">Цены и&nbsp;состав могут меняться&nbsp;— точное меню всегда в&nbsp;Telegram-боте.</p>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="h2">Как заказать</h2>
+    <ol class="steps">
+      <li><b>Откройте бота</b><span>Нажмите «Заказать в&nbsp;Telegram»&nbsp;— откроется меню ШРМ.</span></li>
+      <li><b>Соберите заказ</b><span>Выберите «Самовывоз» или «К&nbsp;столу», добавьте шаурму и&nbsp;напитки.</span></li>
+      <li><b>Заберите горячим</b><span>Подходите к&nbsp;киоску у&nbsp;остановки&nbsp;— заказ будет готов.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="find" id="find">
+  <div class="wrap">
+    <h2 class="h2">Где нас найти</h2>
+    <div class="findgrid">
+      <div class="card-dark">
+        <dl>
+          <div><dt>Адрес</dt><dd>Новосибирск, проспект Дзержинского, 2/2<small>Киоск на&nbsp;улице, у&nbsp;остановки и&nbsp;ТЦ «Роща»</small></dd></div>
+          <div><dt>Часы работы</dt><dd>Круглосуточно, без выходных</dd></div>
+          <div><dt>Заказ</dt><dd><a href="https://t.me/ShaurmaNSK_bot">@ShaurmaNSK_bot</a> в&nbsp;Telegram</dd></div>
+        </dl>
+        <div class="maplinks">
+          <a href="https://2gis.ru/novosibirsk/search/%D0%A8%D1%80%D0%BC%20%D0%94%D0%B7%D0%B5%D1%80%D0%B6%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%202%2F2">Открыть в&nbsp;2ГИС</a>
+          <a href="https://yandex.ru/maps/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%94%D0%B7%D0%B5%D1%80%D0%B6%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%2C%202%2F2">Яндекс Карты</a>
+        </div>
+      </div>
+      <div class="map">
+        <iframe title="Карта: проспект Дзержинского, 2/2" loading="lazy"
+          src="https://yandex.ru/map-widget/v1/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%94%D0%B7%D0%B5%D1%80%D0%B6%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%2C%202%2F2&z=17"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Концепт-проект. Не является официальным сайтом заведения «ШРМ». Меню и&nbsp;цены взяты из&nbsp;открытых источников.</p>
+    <p>Дизайн и&nbsp;разработка&nbsp;— Марк, <a href="https://t.me/mark_razrabotka">@mark_razrabotka</a></p>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn btn-red" href="https://t.me/ShaurmaNSK_bot">Заказать в Telegram</a>
+</div>
+
+<script>
+// Живые часы по новосибирскому времени
+(function(){
+  var el = document.getElementById('clock');
+  function tick(){
+    try{
+      el.textContent = new Intl.DateTimeFormat('ru-RU',{timeZone:'Asia/Novosibirsk',hour:'2-digit',minute:'2-digit'}).format(new Date());
+    }catch(e){ el.parentNode.parentNode.style.display='none'; }
+  }
+  tick(); setInterval(tick, 15000);
+})();
+
+// Нижняя кнопка появляется, когда кнопка первого экрана ушла из вида
+(function(){
+  var dock=document.querySelector('.dock'), ctas=document.querySelector('.ctas');
+  if(!('IntersectionObserver' in window)){dock.classList.add('show');return;}
+  new IntersectionObserver(function(e){dock.classList.toggle('show',!e[0].isIntersecting);}).observe(ctas);
+})();
+
+// Подсветка текущего раздела меню
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.cats a'));
+  if(!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#'+e.target.id); });
+      }
+    });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  ['shawarma','grill','snacks','combo','drinks'].forEach(function(id){ io.observe(document.getElementById(id)); });
+})();
+</script>
+</body>
+</html>
