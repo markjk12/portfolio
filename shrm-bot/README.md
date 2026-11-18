@@ -5,13 +5,18 @@
 Заказ приходит владельцу с кнопками «Принять / Отклонить / Готов»,
 клиент получает уведомления о статусе.
 
-- `app/` — мини-приложение с меню (публикуется через GitHub Pages).
-- `bot/` — код бота для Яндекс Облака (Cloud Functions, Python 3.12, без сторонних библиотек).
-- `dist/shrm-bot.zip` — готовый архив для загрузки в Cloud Functions.
-- `tests/` — проверки: `python3 shrm-bot/tests/test_bot.py`
+- `app/` — мини-приложение с меню (публикуется через GitHub Pages). `app/menu.json` — единственный источник меню и цен.
+- `worker/src.js` — код бота для Cloudflare Workers, `worker/build.mjs` подставляет в него меню.
+- `dist/worker.js` — готовый файл для вставки в Cloudflare.
+- `tests/` — проверки.
+
+Сборка и проверки:
+
+    node shrm-bot/worker/build.mjs
+    node --test shrm-bot/tests/test_worker.mjs
 
 Сумма заказа всегда пересчитывается на сервере по меню — цены из приложения не используются.
 В демо-режиме (`DEMO=1`) карточка «для владельца» приходит и покупателю, чтобы любой
 мог увидеть работу бота целиком.
 
-Переменные окружения функции: `BOT_TOKEN`, `WEBHOOK_SECRET`, `DEMO`, при желании `OWNER_CHAT_ID`.
+Настройки воркера: секреты `BOT_TOKEN`, `WEBHOOK_SECRET`; переменные `DEMO`, при желании `OWNER_CHAT_ID`.
