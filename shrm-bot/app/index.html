@@ -60,6 +60,8 @@ header p{font-size:14px;color:#F0D3B8;margin-top:4px}
 .bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:20}
 .bar button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--bordo);color:var(--cream);font-weight:600;font-size:17px;padding:16px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(62,10,16,.3)}
 .bar .sum{font-family:var(--display);font-weight:400}
+.bar.inline{position:static;margin:20px 16px 0}
+body.co{padding-bottom:24px}
 
 /* Оформление */
 #checkout{padding:0 16px}
@@ -138,7 +140,7 @@ label.f{display:block;margin-top:14px;font-weight:600;font-size:14px;color:var(-
 <script>
 (function(){
   var tg = window.Telegram && Telegram.WebApp;
-  var inTelegram = !!(tg && tg.initData);
+  var inTelegram = !!(tg && tg.platform && tg.platform !== 'unknown');
   if (tg) { try { tg.ready(); tg.expand(); tg.setHeaderColor('#6C151E'); tg.setBackgroundColor('#F5DABF'); } catch(e){} }
   var IMG = '../../shrm/img/';
   var MENU, cart = {}, sizeSel = {}, view = 'menu';
@@ -226,6 +228,8 @@ label.f{display:block;margin-top:14px;font-weight:600;font-size:14px;color:var(-
     document.getElementById('checkout').classList.toggle('hidden', v!=='checkout');
     document.getElementById('done').classList.toggle('hidden', v!=='done');
     if(v==='checkout') renderLines();
+    document.getElementById('bar').classList.toggle('inline', v==='checkout');
+    document.body.classList.toggle('co', v==='checkout');
     if(v==='menu') Object.keys(cardsById).forEach(function(id){ cardsById[id]._draw(); });
     try{ if(tg){ v==='checkout' ? tg.BackButton.show() : tg.BackButton.hide(); } }catch(e){}
     scrollTo(0,0); update();
@@ -273,10 +277,6 @@ label.f{display:block;margin-top:14px;font-weight:600;font-size:14px;color:var(-
   }
 
   ['name','phone'].forEach(function(id){ document.getElementById(id).addEventListener('input',function(){ document.getElementById('err').textContent=''; }); });
-  // пока открыта клавиатура, нижняя кнопка прячется, чтобы не закрывать поле ввода
-  var co=document.getElementById('checkout'), bar=document.getElementById('bar');
-  co.addEventListener('focusin',function(e){ if(/INPUT|TEXTAREA/.test(e.target.tagName)) bar.style.visibility='hidden'; });
-  co.addEventListener('focusout',function(){ bar.style.visibility=''; });
   fetch('menu.json').then(function(r){return r.json()}).then(function(m){ MENU=m; renderMenu(); fillTimes(); update(); });
 })();
 </script>
