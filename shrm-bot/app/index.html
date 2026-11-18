@@ -140,7 +140,6 @@ label.f{display:block;margin-top:14px;font-weight:600;font-size:14px;color:var(-
 <script>
 (function(){
   var tg = window.Telegram && Telegram.WebApp;
-  var inTelegram = !!(tg && tg.platform && tg.platform !== 'unknown');
   if (tg) { try { tg.ready(); tg.expand(); tg.setHeaderColor('#6C151E'); tg.setBackgroundColor('#F5DABF'); } catch(e){} }
   var IMG = '../../shrm/img/';
   var MENU, cart = {}, sizeSel = {}, view = 'menu';
@@ -268,12 +267,14 @@ label.f{display:block;margin-top:14px;font-weight:600;font-size:14px;color:var(-
     if(phone.replace(/\D/g,'').length<10){ err.textContent='Укажите телефон, чтобы мы могли связаться'; return; }
     var order={v:1, items:Object.keys(cart).map(function(k){ var p=k.split('|'); return [p[0],p[1],cart[k]]; }),
       mode:mode, time:document.getElementById('time').value, name:name, phone:phone, comment:document.getElementById('comment').value.trim()};
-    if(inTelegram){
-      try{ tg.sendData(JSON.stringify(order)); return; }
-      catch(e){ err.textContent='Откройте меню кнопкой «Открыть меню» внизу чата с ботом'; return; }
-    }
-    cart={}; show('done');
-    document.getElementById('doneText').textContent='Это превью в браузере. В Telegram заказ ушёл бы в чат с ботом, а владелец получил бы карточку заказа.';
+    // Всегда пробуем отправить заказ в Telegram. Если получилось, Telegram сам закроет меню.
+    // Если через 2 секунды меню всё ещё открыто — значит, оно открыто не из чата с ботом.
+    try{ tg && tg.sendData(JSON.stringify(order)); }catch(e){}
+    var btn=document.getElementById('barBtn'); btn.disabled=true; document.getElementById('barLabel').textContent='Отправляем…';
+    setTimeout(function(){
+      btn.disabled=false; update();
+      err.innerHTML='Заказ можно отправить, только если меню открыто кнопкой «Открыть меню» в чате с ботом <a href="https://t.me/shrm_demo_mark_bot">@shrm_demo_mark_bot</a>.';
+    },2000);
   }
 
   ['name','phone'].forEach(function(id){ document.getElementById(id).addEventListener('input',function(){ document.getElementById('err').textContent=''; }); });
