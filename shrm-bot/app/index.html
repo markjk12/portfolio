@@ -273,6 +273,10 @@ label.f{display:block;margin-top:14px;font-weight:600;font-size:14px;color:var(-
   }
 
   ['name','phone'].forEach(function(id){ document.getElementById(id).addEventListener('input',function(){ document.getElementById('err').textContent=''; }); });
+  // пока открыта клавиатура, нижняя кнопка прячется, чтобы не закрывать поле ввода
+  var co=document.getElementById('checkout'), bar=document.getElementById('bar');
+  co.addEventListener('focusin',function(e){ if(/INPUT|TEXTAREA/.test(e.target.tagName)) bar.style.visibility='hidden'; });
+  co.addEventListener('focusout',function(){ bar.style.visibility=''; });
   fetch('menu.json').then(function(r){return r.json()}).then(function(m){ MENU=m; renderMenu(); fillTimes(); update(); });
 })();
 </script>
